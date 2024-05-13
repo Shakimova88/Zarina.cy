@@ -279,7 +279,7 @@ describe("Assertions", () => {
     });
   });
 
-  it.only("Assertion Practices", () => {
+  it("Assertion Practices", () => {
     /**
      * 1. Go to https://techglobal-training.com/frontend
      * 2. Navigate to 'Html Elements' card
@@ -346,6 +346,8 @@ describe("Assertions", () => {
         .find("option:selected")
         .should("have.text", dropdowns[index]);
     });
+  });
+});
 
     /**
      * Test Case: Validate Dropdowns Functionality on TechGlobal Training Page
@@ -358,8 +360,23 @@ describe("Assertions", () => {
      * Validate result message displays "Your Green MacBook Pro 13 will be delivered to you."
      */
 
-  });
-});
+describe ('Validate Dropdowns Functionality on TechGlobal Training Page', () => {
+  beforeEach(() => {
+    cy.visit("https://www.techglobal-training.com/frontend/");
+  })
+ 
+    it('Assertin practices, Dropdown Function', () => {
+   
+ cy.get('#card-4').should('exist').click();
+ cy.get('#product_dropdown').select('MacBook Pro 13');
+ cy.get('#color_dropdown').select('Green'); 
+ cy.get('#shipment_dropdown').click(); 
+ cy.get('span[role="option"][aria-label="Delivery"]').click();
+ cy.get('#submit').click();
+ cy.get('#result').should('contain', 'Your Green MacBook Pro 13 will be delivered to you.')
+
+})
+})
 
 
 
