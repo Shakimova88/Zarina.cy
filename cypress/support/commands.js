@@ -7,7 +7,9 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-//
+Cypress.Commands.add("clickCard", (link) => {
+    cy.get(".cards").contains(link).click();
+});
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
