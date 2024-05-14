@@ -384,6 +384,3 @@ describe ('Validate Dropdowns Functionality on TechGlobal Training Page', () => 
 
 
 
-
-
-
