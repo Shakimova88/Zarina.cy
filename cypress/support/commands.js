@@ -10,6 +10,17 @@
 Cypress.Commands.add("clickCard", (link) => {
     cy.get(".cards").contains(link).click();
 });
+
+
+Cypress.Commands.add("checkOptionAndValidateOthersNotChecked",(optionToCheck, expectedTexts) => {
+
+    cy.contains(optionToCheck).find('input').check().should('be.checked')
+  
+    expectedTexts.filter(option => option !== optionToCheck).forEach(uncheckOption => {
+      cy.contains(uncheckOption).find('input').should('not.be.checked')
+    })
+  })
+  
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
