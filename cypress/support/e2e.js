@@ -15,14 +15,24 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import 'cypress-real-events';
+import "cypress-real-events";
 import '@4tw/cypress-drag-drop'
+const { exec } = require('child_process');
+
+
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-const app = window.top;
-if (!app.document.head.querySelector("[data-hide-command-log-request]")) {
-const style = app.document.createElement("style");
-style.innerHTML =".command-name-request, command-name-xhr { display: none }";
-style.setAttribute("data-hide-command-log-request", " "); 
-app.document.head.appendChild(style);
-};
+
+// before(() => {
+//   exec('npm run build')
+//   cy.exec('npm run build')
+// })
+
+beforeEach(() => {
+  cy.visit(`${Cypress.env('SITE_URL')}/frontend`);
+});
+
+// after(() => {
+//   exec('npm run close')
+// })
