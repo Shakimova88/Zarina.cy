@@ -16,9 +16,14 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import "cypress-real-events";
-import '@4tw/cypress-drag-drop'
+import '@4tw/cypress-drag-drop';
+import 'cypress-mochawesome-reporter/register';
+import registerCypressGrep from '@cypress/grep/src/support'
+registerCypressGrep()
+import 'cypress-grep' 
 const { exec } = require('child_process');
 
+// Added the cypress-grep :
 
 
 // Alternatively you can use CommonJS syntax:
