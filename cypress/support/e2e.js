@@ -15,14 +15,17 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import "cypress-real-events";
+import 'cypress-real-events'
 import '@4tw/cypress-drag-drop'
-const { exec } = require('child_process');
+import 'cypress-mochawesome-reporter/register'
+const { exec } = require('child_process')
 
 
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+const registerCypressGrep = require('@cypress/grep')
+registerCypressGrep()
 
 // before(() => {
 //   exec('npm run build')
@@ -30,8 +33,8 @@ const { exec } = require('child_process');
 // })
 
 beforeEach(() => {
-  cy.visit(`${Cypress.env('SITE_URL')}/frontend`);
-});
+  cy.visit(`${Cypress.env('SITE_URL')}/frontend`)
+})
 
 // after(() => {
 //   exec('npm run close')

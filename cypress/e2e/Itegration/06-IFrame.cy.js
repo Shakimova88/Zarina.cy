@@ -1,26 +1,26 @@
-describe("Handling iFrames", () => {
-    beforeEach(() => {
-      cy.visit("https://www.techglobal-training.com/frontend/");
-      cy.contains(".cards", "IFrames").click();
-    });
+describe('Handling iFrames', () => {
+  beforeEach(() => {
+    cy.visit('https://www.techglobal-training.com/frontend/')
+    cy.contains('.cards', 'IFrames').click()
+  })
   
-    it("iFrame", () => {
-      // cy.get('#form_frame')
-      // .its('0.contentDocument.body')
-      // .should('not.be.empty')
-      // .find('#first_name').type('MyName')
+  it('iFrame', () => {
+    // cy.get('#form_frame')
+    // .its('0.contentDocument.body')
+    // .should('not.be.empty')
+    // .find('#first_name').type('MyName')
   
-      const arr = ["tech", "global"];
+    const arr = ['tech', 'global']
   
-      cy.get("#form_frame")
-        .its("0.contentDocument.body")
-        .find("#first_name, #last_name")
-        .each(($el, index) => {
-          cy.wrap($el).type(arr[index]);
-        });
-    });
+    cy.get('#form_frame')
+      .its('0.contentDocument.body')
+      .find('#first_name, #last_name')
+      .each(($el, index) => {
+        cy.wrap($el).type(arr[index])
+      })
+  })
   
-    /**
+  /**
      * Go to https://techglobal-training.com/frontend/
      * Click on the "IFrames" card
      * Enter "John" into the first name input box
@@ -29,21 +29,21 @@ describe("Handling iFrames", () => {
      * Validate the result equals "You entered: John Doe"
      */
   
-    it('iFrame Test Case', () => {
+  it('iFrame Test Case', () => {
 
-        const arr = ["John", "Doe"];
+    const arr = ['John', 'Doe']
     
-        cy.get("#form_frame")
-        .its("0.contentDocument.body")
-        .find("#first_name, #last_name")
-        .each(($el, index) => {
-          cy.wrap($el).type(arr[index]);
-        });
-    
-        cy.get("#form_frame")
-        .its("0.contentDocument.body")
-        .find('#submit').click()
-    
-        cy.get('#result').should('have.text', `You entered: ${arr.join(' ')}`)
+    cy.get('#form_frame')
+      .its('0.contentDocument.body')
+      .find('#first_name, #last_name')
+      .each(($el, index) => {
+        cy.wrap($el).type(arr[index])
       })
-    });
+    
+    cy.get('#form_frame')
+      .its('0.contentDocument.body')
+      .find('#submit').click()
+    
+    cy.get('#result').should('have.text', `You entered: ${arr.join(' ')}`)
+  })
+})

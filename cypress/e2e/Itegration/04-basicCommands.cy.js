@@ -1,9 +1,9 @@
 describe('Cypress Acttions', () => {
 
   beforeEach(() => {
-    cy.visit("https://www.techglobal-training.com/frontend/");
-    cy.contains(".cards", "Html Elements").click();
-  });
+    cy.visit('https://www.techglobal-training.com/frontend/')
+    cy.contains('.cards', 'Html Elements').click()
+  })
 
   /**
    * Visit the techglobal frontend page
@@ -23,13 +23,13 @@ describe('Cypress Acttions', () => {
     cy.get('.mt-1').should('have.text', 'You clicked on “Sign in”')
 
     cy.get('#register_button').click()
-    .next()
-    .next()
-    .should('have.text', 'You clicked on “Register”')
-    .prev()
-    .click()
-    .next()
-    .should('have.text', 'You clicked on “Sign in”')
+      .next()
+      .next()
+      .should('have.text', 'You clicked on “Register”')
+      .prev()
+      .click()
+      .next()
+      .should('have.text', 'You clicked on “Sign in”')
   })
 
   it('Checkbox & Radio Buttons', () => {
@@ -53,10 +53,10 @@ describe('Cypress Acttions', () => {
      */
 
     cy.get('#checkbox_1')
-    .check()
-    .should('be.checked')
-    .uncheck()
-    .should('not.be.checked')
+      .check()
+      .should('be.checked')
+      .uncheck()
+      .should('not.be.checked')
 
     /**
      * 1. Locate the "Java" radio button, and validate its not checked
@@ -65,7 +65,7 @@ describe('Cypress Acttions', () => {
      */
 
     cy.get('#radio_1_option_1').should('not.be.checked')
-    .check().should('be.checked')
+      .check().should('be.checked')
   })
 
   it('Text Input', () => {
@@ -95,10 +95,10 @@ describe('Cypress Acttions', () => {
     // .type(last).should('have.value', last).clear().should('be.empty')
 
     cy.get('#text_input1').type(first).should('have.value', first)
-    .clear().should('be.empty')
+      .clear().should('be.empty')
 
     cy.get('#text_input2').type(last).should('have.value', last)
-    .clear().should('be.empty')
+      .clear().should('be.empty')
   })
 
   it('Date Inputs', () => {
@@ -109,9 +109,9 @@ describe('Cypress Acttions', () => {
      * Repeat the same thing with second date input
      */
 
-    cy.get("#date_input1").type("06/08/1993{enter}");
+    cy.get('#date_input1').type('06/08/1993{enter}')
 
-    cy.get("#date_input2").clear().type("06/08/1993{esc}");
+    cy.get('#date_input2').clear().type('06/08/1993{esc}')
   })
 
   it.only('Dropdowns', () => {
