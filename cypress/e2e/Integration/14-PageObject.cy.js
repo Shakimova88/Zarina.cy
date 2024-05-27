@@ -3,9 +3,17 @@ import LoginPage from '../../pages/LoginPage'
 
 const loginPage = new LoginPage()
 
-describe("Login page test", () => {
+describe("Login page test", { tags: ['@regression'] }, () => {
   beforeEach(() => {
     cy.clickCard("Project - Login Function");
+
+    cy.fixture('example').then( function(data) {
+      this.username = data.username
+      this.password = data.password
+    })
+
+
+
   });
 
   // it("Login without POM", () => {
@@ -18,8 +26,9 @@ describe("Login page test", () => {
   //   cy.get("#success_lgn").should("be.visible");
   // });
 
-  it("Login with POM - Positive", () => {
-    loginPage.userLogin(Cypress.env("UI_USERNAME"), Cypress.env("UI_PASSWORD"))
+  it("Login with POM - Positive", function() {
+    // loginPage.userLogin(Cypress.env("UI_USERNAME"), Cypress.env("UI_PASSWORD"))
+    loginPage.userLogin(this.username, this.password)
     loginPage.getSuccessMessage().should('be.visible')
   });
 
@@ -29,7 +38,7 @@ describe("Login page test", () => {
    * 3. Validate error message is "Invalid Username entered!"
    */
 
-  it("Login with POM - Negative", () => {
+  it("Login with POM - Negative", { tags: ['@smoke'] }, () => {
     loginPage.userLogin('WrongName', 'WrongPassword')
     loginPage.getErrorMessage().should('have.text', 'Invalid Username entered!')
   });
