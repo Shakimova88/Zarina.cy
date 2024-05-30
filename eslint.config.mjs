@@ -1,11 +1,19 @@
-// eslint.config.js
-
 import js from '@eslint/js'
+import cypress from 'eslint-plugin-cypress'
 
 export default [
-  // js.configs.recommended, // Recommended config applied to all files
-  // Override the recommended config
+  js.configs.recommended, // Enable recommended config
   {
+    files: ['**/*.js'], // Apply to all JavaScript files
+    languageOptions: {
+      sourceType: 'module', // Ensure ES Modules are supported
+    },
+    plugins: {
+      cypress, // Add Cypress plugin
+    },
+    env: {
+      'cypress/globals': true, // Add Cypress environment
+    },
     rules: {
       indent: ['error', 2],
       'no-unused-vars': 'warn',
@@ -16,6 +24,5 @@ export default [
         { code: 120, ignoreComments: true, ignoreStrings: true },
       ],
     },
-    // ...other configuration
   },
 ]
