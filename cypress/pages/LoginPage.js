@@ -38,3 +38,4 @@ class LoginPage extends BasePage {
 
 // ES6
 export default LoginPage
+

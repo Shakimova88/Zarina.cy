@@ -25,10 +25,10 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
       require('cypress-mochawesome-reporter/plugin')(on)
-      require('@cypress/grep/src/plugin')(config)
       return config
     },
-    baseUrl: 'https://techglobal-training.com',
-    video: true
+    //baseUrl: 'https://techglobal-training.com',
+    video: true,
+    specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
   },
 })
